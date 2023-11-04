@@ -143,6 +143,7 @@ class UserManage extends Component {
                                 <th>First name</th>
                                 <th>Last name</th>
                                 <th>Address</th>
+                                <th>Role id</th>
                                 <th>Actions</th>
                             </tr>
 
@@ -154,6 +155,7 @@ class UserManage extends Component {
                                         <td>{item.firstName}</td>
                                         <td>{item.lastName}</td>
                                         <td>{item.address}</td>
+                                        <td>{item.roleId}</td>
                                         <td>
                                             <button className='btn-edit'
                                                 onClick={() => this.handleEditUser(item)}>
