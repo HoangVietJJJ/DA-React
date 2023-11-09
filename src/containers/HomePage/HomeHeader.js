@@ -40,7 +40,7 @@ class HomeHeader extends Component {
     render() {
         const { placeholders, currentPlaceholderIndex } = this.state;
         let language = this.props.language;
-        console.log('check language : ', language)
+
         return (
             <React.Fragment>
                 <div className='home-header-container'>
@@ -83,7 +83,7 @@ class HomeHeader extends Component {
                         <div className='title1'><FormattedMessage id="banner.title1" /></div>
                         <div className='title2'><b><FormattedMessage id="banner.title2" /></b></div>
                         <div className='search'>
-                            <i class="fas fa-search"></i>
+                            <i className="fas fa-search"></i>
                             <input type='text' placeholder={placeholders[currentPlaceholderIndex]}></input>
                         </div>
                     </div>
@@ -125,6 +125,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language,
     };
 };
