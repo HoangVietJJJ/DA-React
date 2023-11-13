@@ -57,9 +57,6 @@ class Login extends Component {
             }
 
         }
-
-
-
     }
 
     handleShowHidePassword = () => {
