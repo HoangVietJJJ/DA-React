@@ -31,11 +31,11 @@
     border          : none;
     outline         : none;
     background-color: transparent;
-    color           : darkblue;
+    color           : rgb(225, 157, 10);
 
     &:hover {
         background-color: transparent !important;
-        color           : darkblue !important;
+        color           : rgb(9, 139, 0) !important;
     }
 }
 
@@ -48,7 +48,7 @@
 
     &:hover {
         background-color: transparent !important;
-        color           : red !important;
+        color           : rgb(24, 22, 22) !important;
     }
 }
 
