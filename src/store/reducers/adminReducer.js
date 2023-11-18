@@ -6,6 +6,7 @@ const initialState = {
     roles: [],
     positions: [],
     users: [],
+    topDoctors: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -77,6 +78,22 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_ALL_USER_FAILED:
             copyState = { ...state };
             copyState.users = [];
+
+            return {
+                ...copyState
+            }
+
+        case actionTypes.FETCH_TOP_DOCTOR_SUCCESS:
+            copyState = { ...state };
+            copyState.topDoctors = action.dataDoctor;
+
+            return {
+                ...copyState
+            }
+
+        case actionTypes.FETCH_TOP_DOCTOR_FAILED:
+            copyState = { ...state };
+            copyState.topDoctors = [];
 
             return {
                 ...copyState
