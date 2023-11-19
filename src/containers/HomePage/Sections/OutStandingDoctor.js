@@ -11,8 +11,10 @@ class OutStandingDoctor extends Component {
         super(props)
         this.state = {
             arrDoctors: [],
+
         }
     }
+
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
