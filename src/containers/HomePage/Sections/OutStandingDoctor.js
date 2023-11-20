@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
 import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
+import { withRouter } from "react-router";
 
 class OutStandingDoctor extends Component {
 
@@ -28,6 +29,11 @@ class OutStandingDoctor extends Component {
         this.props.loadTopDoctor();
     }
 
+    handleViewDetaiDoctor = (doctor) => {
+        console.log('view info: ', doctor)
+        this.props.history.push(`/detail-doctor/${doctor.id}`)
+    }
+
     render() {
         let arrDoctors = this.state.arrDoctors;
         let { language } = this.props;
@@ -49,12 +55,13 @@ class OutStandingDoctor extends Component {
                                         imageBase64 = new Buffer(item.image, 'base64').toString('binary');
                                     }
                                     let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
-                                    let nameEn = `${item.positionData.valueEn}, ${item.lastName} ${item.firstName}`;
+                                    let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                     return (
-                                        <div className='section-customize' key={index}>
+                                        <div className='section-customize' key={index} >
                                             <div className='customize-border'>
                                                 <div className='outer-bg'>
                                                     <div className='bg-image section-doctor'
+                                                        onClick={() => this.handleViewDetaiDoctor(item)}
                                                         style={{ backgroundImage: `url(${imageBase64})` }}
                                                     />
                                                 </div>
@@ -90,4 +97,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));
