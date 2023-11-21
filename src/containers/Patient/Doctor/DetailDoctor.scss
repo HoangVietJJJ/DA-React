@@ -1,5 +1,5 @@
 .doctor-detail-container {
-    height      : 100vh;
+    height      : 600px;
     //  margin  : 0 100px;
     //border: 1px solid red;
 
@@ -37,12 +37,14 @@
 
     .detail-doctor {
 
-        background: #f5f5f5;
-        border-top: 1px solid rgb(188, 179, 179);
+        background   : #f5f5f5;
+        border-top   : 1px solid rgb(188, 179, 179);
+        border-bottom: 1px solid rgb(188, 179, 179);
 
         .detail-content {
-            margin     : 0 100px;
-            padding-top: 20px;
+            margin        : 0 100px;
+            padding-top   : 20px;
+            padding-bottom: 10px;
         }
     }
 

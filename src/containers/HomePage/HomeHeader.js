@@ -5,6 +5,7 @@ import logo from '../../assets/logo.svg.svg';
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
+import { withRouter } from "react-router";
 
 class HomeHeader extends Component {
     constructor(props) {
@@ -37,6 +38,12 @@ class HomeHeader extends Component {
         //fire redux actions
     }
 
+    returnToHome = () => {
+        if (this.props.history) {
+            this.props.history.push(`/home`)
+        }
+    }
+
     render() {
         const { placeholders, currentPlaceholderIndex } = this.state;
         let language = this.props.language;
@@ -48,7 +55,7 @@ class HomeHeader extends Component {
                         <div className='left-content'>
                             <div> <i className="fas fa-bars" /></div>
 
-                            <div><img className='header-logo' src={logo} /></div>
+                            <div><img className='header-logo' src={logo} onClick={() => this.returnToHome()} /></div>
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
@@ -138,4 +145,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
