@@ -231,7 +231,7 @@ export const fetchTopDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getTopDoctorHomeService('');
-            if (res && res !== 0) {
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
                     dataDoctor: res.data
@@ -256,7 +256,7 @@ export const fetchAllDoctors = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllDoctorsService();
-            if (res && res !== 0) {
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_DOCTOR_SUCCESS,
                     dataDr: res.data
@@ -298,6 +298,29 @@ export const saveDoctorDetails = (inputDetail) => {
             console.log('SAVE_DOCTOR_DETAILS_FAILED', e)
             dispatch({
                 type: actionTypes.SAVE_DOCTOR_DETAILS_FAILED,
+            })
+        }
+    }
+}
+
+export const fetchAllScheduleHours = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService('TIME');
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_HOURS_SUCCESS,
+                    dataTime: res.data
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_HOURS_FAILED,
+                })
+            }
+        } catch (e) {
+            console.log('FETCH_ALLCODE_SCHEDULE_HOURS_FAILED', e)
+            dispatch({
+                type: actionTypes.FETCH_ALLCODE_SCHEDULE_HOURS_FAILED,
             })
         }
     }

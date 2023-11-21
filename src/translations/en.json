@@ -57,5 +57,11 @@
     "homepage": {
         "see-more": "More info",
         "outstanding-doctor": "Outstanding doctors"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's schedule",
+        "doctor-lable": "Select doctor",
+        "pick-time": "Select date",
+        "save-schedule": "Save schedule"
     }
 }

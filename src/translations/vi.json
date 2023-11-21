@@ -57,5 +57,11 @@
     "homepage": {
         "see-more": "Xem Thêm",
         "outstanding-doctor": "Bác sĩ nổi bật"
+    },
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh",
+        "doctor-lable": "Chọn bác sĩ",
+        "pick-time": "Chọn ngày",
+        "save-schedule": "Lưu thông tin"
     }
 }
