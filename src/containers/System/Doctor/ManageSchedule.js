@@ -8,8 +8,8 @@ import { CRUD_ACTIONS, LANGUAGES, dateFormat } from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from "react-toastify";
-import _, { iteratee } from 'lodash';
-import { REHYDRATE } from 'redux-persist';
+import _ from 'lodash';
+import { saveBulkScheduleService } from '../../../services/userService';
 
 class ManageSchedule extends Component {
 
@@ -103,7 +103,7 @@ class ManageSchedule extends Component {
         }
     }
 
-    handleSaveScheduleButton = () => {
+    handleSaveScheduleButton = async () => {
         let { rangeTime, selectedDoctorPlan, currentDate } = this.state;
         let result = [];
 
@@ -116,7 +116,10 @@ class ManageSchedule extends Component {
             return;
         }
 
-        let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        //let formatedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
+        //let formatedDate = moment(currentDate).unix();
+        let formatedDate = new Date(currentDate).getTime();
+        //let formatedDate = moment(currentDate).format('YYYY/MM/DD')
 
         if (rangeTime && rangeTime.length > 0) {
             let selectedTime = rangeTime.filter(item => item.isSelected === true)
@@ -125,7 +128,7 @@ class ManageSchedule extends Component {
                     let object = {};
                     object.doctorId = selectedDoctorPlan.value;
                     object.date = formatedDate;
-                    object.time = time.keyMap;
+                    object.timeType = time.keyMap;
                     result.push(object);
                 })
 
@@ -134,6 +137,15 @@ class ManageSchedule extends Component {
                 return;
             }
         }
+
+        let res = await saveBulkScheduleService({
+            arrSchedule: result,
+            doctorId: selectedDoctorPlan.value,
+            formatedDate: formatedDate,
+
+        });
+
+        console.log('check bulk result: ', res)
 
         console.log('check result: ', result)
     }
@@ -207,7 +219,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchAllDoctorsRedux: () => dispatch(actions.fetchAllDoctors()),
-        fetchAllScheDuleHoursRedux: () => dispatch(actions.fetchAllScheduleHours())
+        fetchAllScheDuleHoursRedux: () => dispatch(actions.fetchAllScheduleHours()),
+        // saveBulkScheduleServiceRedux: (data) => dispatch(actions.saveBulkScheduleService(data)),
     };
 };
 
