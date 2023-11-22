@@ -48,6 +48,20 @@
         }
     }
 
+    .schedule-doctor {
+        margin : 0 100px;
+        display: flex;
+        height : 200px;
+        border : 1px solid red;
+
+        .content-schedule {
+            width: 50%;
+        }
+
+        .content-info {
+            width: 50%;
+        }
+    }
 
 
 }
