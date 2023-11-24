@@ -1,5 +1,5 @@
 .doctor-schedule-container {
-    border-right: 1px solid green;
+    border-right: 1px solid #ddd;
     height      : 100%;
 
     .time-table {
@@ -33,23 +33,41 @@
         }
 
         .time-content {
-            display  : flex;
-            flex-wrap: wrap;
-            gap      : 15px;
 
-            button {
-                padding      : 10px 20px;
-                border       : none;
-                outline      : none;
-                background   : #fff04b;
-                border-radius: 3px;
-                font-weight  : 600;
-                min-width    : 120px;
+            .time-content-btn {
+                display       : flex;
+                flex-wrap     : wrap;
+                gap           : 15px;
+                padding-bottom: 15px;
 
-                &:hover {
-                    background: #03a9f4;
+                button {
+                    padding        : 10px 20px;
+                    border         : none;
+                    outline        : none;
+                    background     : #fff04b;
+                    border-radius  : 3px;
+                    font-weight    : 600;
+                    //min-width    : 200px;
+
+                    &:hover {
+                        background: #03a9f4;
+                    }
+                }
+
+                .btn-vi {
+                    min-width: 150px;
+                }
+
+                .btn-en {
+                    min-width: 200px;
+                }
+
+                .notice {
+                    font-style: italic;
+                    font-size : 17px;
                 }
             }
+
         }
     }
 }

@@ -85,11 +85,10 @@ class ManageSchedule extends Component {
     }
 
     handleOnChangeDatePicker = (date) => {
-        const today = new Date(); // Ngày hiện tại
-        const currentDate = date[0] && date[0] > today ? date[0] : today;
+        //const today = new Date(); // Ngày hiện tại
+        //const currentDate = date[0] && date[0] > today ? date[0] : today;
         this.setState({
-            currentDate: currentDate
-            //date[0]
+            currentDate: date[0] //currentDate
         })
     }
 
@@ -134,7 +133,6 @@ class ManageSchedule extends Component {
                     object.timeType = time.keyMap;
                     result.push(object);
                 })
-                toast.success("Udapte schedule success!");
             } else {
                 toast.error("Missing time!")
                 return;
@@ -148,14 +146,18 @@ class ManageSchedule extends Component {
 
         });
 
-        console.log('check bulk result: ', res)
-
-        console.log('check result: ', result)
+        if (res && res.errCode === 0) {
+            toast.success("Success!");
+        } else {
+            toast.error("Error!")
+            console.log('error >>> res: ', res)
+        }
     }
 
     render() {
         let rangeTime = this.state.rangeTime;
         let language = this.props.language;
+        //let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
         return (
             <div className='manage-schedul-container'>
                 <div className='m-s-title'>

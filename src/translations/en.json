@@ -63,5 +63,13 @@
         "doctor-lable": "Select doctor",
         "pick-time": "Select date",
         "save-schedule": "Save schedule"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Schedule",
+            "notice": "The doctor does not accept appointments during this time, please choose another day!",
+            "choose": "Choose ",
+            "book-free": " and book (free)"
+        }
     }
 }

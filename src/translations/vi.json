@@ -63,5 +63,13 @@
         "doctor-lable": "Chọn bác sĩ",
         "pick-time": "Chọn ngày",
         "save-schedule": "Lưu thông tin"
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "Lịch khám",
+            "notice": "Bác sĩ không nhận lịch hẹn trong thời gian này, vui lòng chọn ngày khác!",
+            "choose": "Chọn ",
+            "book-free": " và đặt (miễn phí)"
+        }
     }
 }
