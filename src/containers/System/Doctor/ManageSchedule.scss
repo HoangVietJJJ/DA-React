@@ -18,14 +18,13 @@
         .btn-schedule {
             padding    : 7px 16px;
             border     : 1px solid gray;
-            background : #fff8ae;
+            background : #fff04b;
             font-weight: 600;
             outline    : none;
 
             &:hover {
                 opacity   : 0.9;
                 background: #03a9f4;
-                border    : 1px solid purple;
             }
 
             &.active {

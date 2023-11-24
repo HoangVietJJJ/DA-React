@@ -85,8 +85,11 @@ class ManageSchedule extends Component {
     }
 
     handleOnChangeDatePicker = (date) => {
+        const today = new Date(); // Ngày hiện tại
+        const currentDate = date[0] && date[0] > today ? date[0] : today;
         this.setState({
-            currentDate: date[0]
+            currentDate: currentDate
+            //date[0]
         })
     }
 
@@ -131,7 +134,7 @@ class ManageSchedule extends Component {
                     object.timeType = time.keyMap;
                     result.push(object);
                 })
-
+                toast.success("Udapte schedule success!");
             } else {
                 toast.error("Missing time!")
                 return;
