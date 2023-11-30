@@ -70,6 +70,12 @@
             "notice": "The doctor does not accept appointments during this time, please choose another day!",
             "choose": "Choose ",
             "book-free": " and book (free)"
+        },
+        "extra-infor": {
+            "text-address": "ADDRESS",
+            "price": "Price:",
+            "detail": "See detail",
+            "hide": "Hide"
         }
     },
     "admin": {

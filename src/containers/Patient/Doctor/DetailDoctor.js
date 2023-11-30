@@ -38,7 +38,6 @@ class DetailDoctor extends Component {
     }
 
     render() {
-        console.log('check current state: ', this.state);
         let { detailDoctor } = this.state;
         let { language } = this.props;
         let nameVi = '', nameEn = '';
@@ -77,7 +76,9 @@ class DetailDoctor extends Component {
                             />
                         </div>
                         <div className='content-info'>
-                            <DoctorExtraInfor doctorIdFromParent={this.state.currentDoctorId} />
+                            <DoctorExtraInfor
+                                doctorIdFromParent={this.state.currentDoctorId}
+                            />
                         </div>
                     </div>
                     <div className='detail-doctor'>

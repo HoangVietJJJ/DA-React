@@ -92,7 +92,6 @@ class DoctorSchedule extends Component {
                 })
             }
 
-            console.log('check response schedule: ', res)
         }
     }
 

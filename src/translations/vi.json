@@ -70,6 +70,12 @@
             "notice": "Bác sĩ không nhận lịch hẹn trong thời gian này, vui lòng chọn ngày khác!",
             "choose": "Chọn ",
             "book-free": " và đặt (miễn phí)"
+        },
+        "extra-infor": {
+            "text-address": "ĐỊA CHỈ KHÁM",
+            "price": "Giá khám:",
+            "detail": "Xem chi tiết",
+            "hide": " Ẩn bảng giá"
         }
     },
     "admin": {
