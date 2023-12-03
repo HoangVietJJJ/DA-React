@@ -4,7 +4,7 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import './DoctorSchedule.scss';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
-import localization from 'moment/locale/vi'
+import localization from 'moment/locale/vi';
 import { LANGUAGES } from '../../../utils';
 import { getDoctorScheduleByDateService } from '../../../services/userService';
 import BookingModal from './Modal/BookingModal';
