@@ -4,6 +4,8 @@ import { LANGUAGES } from '../../../../utils';
 import { FormattedMessage } from 'react-intl';
 import './BookingModal.scss';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import ProfileDoctor from '../ProfileDoctor';
+import _ from 'lodash';
 
 class BookingModal extends Component {
 
@@ -26,6 +28,12 @@ class BookingModal extends Component {
 
     render() {
         let { isOpenModel, isCloseModal, dataTime } = this.props;
+        let doctorId = '';
+        if (dataTime && !_.isEmpty(dataTime)) {
+            doctorId = dataTime.doctorId
+        }
+        // let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : '';
+        console.log('data time: ', dataTime)
         return (
             // toggle={} backdrop={true}
             <Modal isOpen={isOpenModel} className={'booking-modal-container'} size='lg' centered>
@@ -37,13 +45,12 @@ class BookingModal extends Component {
                         ><i className="fas fa-times"></i></span>
                     </div>
                     <div className='booking-modal-body container'>
-                        {/* {JSON.stringify(dataTime)} */}
                         <div className='doctor-infor'>
+                            <ProfileDoctor
+                                doctorId={doctorId}
+                            />
+                        </div>
 
-                        </div>
-                        <div className='price'>
-                            Giá khám: 500.000VND
-                        </div>
                         <div className='row'>
                             <div className='col-6 form-group'>
                                 <label>Họ tên</label>
