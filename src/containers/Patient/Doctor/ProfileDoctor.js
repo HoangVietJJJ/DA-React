@@ -60,7 +60,7 @@ class ProfileDoctor extends Component {
             return (
                 <>
                     <div>{time} - {date}</div>
-                    <div>Phí đặt lịch: Miễn phí</div>
+                    <div><FormattedMessage id={'patient.booking-modal.priceBooking'} /></div>
                 </>
             );
         }

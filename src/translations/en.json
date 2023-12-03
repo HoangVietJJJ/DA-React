@@ -76,6 +76,20 @@
             "price": "Price:",
             "detail": "See detail",
             "hide": "Hide"
+        },
+        "booking-modal": {
+            "title": "Infnormation",
+            "fullName": "Full name",
+            "phoneNumber": "phonenumber",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason",
+            "birthday": "Date of birth",
+            "gender": "Gender",
+            "btnConfirm": "Confirm",
+            "btnCancel": "Cancel",
+            "priceBooking": "Free booking",
+            "price": "Price"
         }
     },
     "admin": {
