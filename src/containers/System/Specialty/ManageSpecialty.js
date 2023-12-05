@@ -11,7 +11,7 @@ import { createNewSpecialtyService } from '../../../services/userService';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-class DefaultClass extends Component {
+class ManageSpecialty extends Component {
 
     constructor(props) {
         super(props);
@@ -60,10 +60,17 @@ class DefaultClass extends Component {
 
     handleSaveNewSpecialty = async () => {
         let res = await createNewSpecialtyService(this.state);
+        console.log('res', res)
         if (res && res.errCode === 0) {
             toast.success('Add new specialty successfuly!')
+            this.setState({
+                name: '',
+                imageBase64: '',
+                descriptionHTML: '',
+                descriptionMarkdown: '',
+            })
         } else {
-            toast.success('Something wrong!')
+            toast.error('Something wrong!')
         }
     }
 
@@ -117,4 +124,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultClass);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageSpecialty);
