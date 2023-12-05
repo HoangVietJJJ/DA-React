@@ -11,6 +11,8 @@ import * as actions from '../../../../store/actions';
 import Select from 'react-select';
 import { postPatientBookAppointmentService } from '../../../../services/userService';
 import { toast } from 'react-toastify';
+import moment from 'moment';
+import reactRouter from 'react-router';
 
 class BookingModal extends Component {
 
@@ -93,10 +95,44 @@ class BookingModal extends Component {
         })
     }
 
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    builTimeBooking = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let time = language === LANGUAGES.VI ?
+                dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
+
+            let date = language === LANGUAGES.VI ?
+                moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY') :
+                moment.unix(+dataTime.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
+            date = this.capitalizeFirstLetter(date);
+
+            return `${time} - ${date}`
+        }
+        return ''
+    }
+
+    builDoctorName = (dataTime) => {
+        let { language } = this.props;
+        if (dataTime && !_.isEmpty(dataTime)) {
+            let name = language = LANGUAGES.VI ?
+                `${dataTime.doctorData.lastName} ${dataTime.doctorData.firstName}` :
+                `${dataTime.doctorData.firstName} ${dataTime.doctorData.lastName}`
+
+            return name
+        }
+        return ''
+    }
+
     handleConfirmBooking = async () => {
         //validate input
         //!data.email || !data.doctorId || !data.timeType || !data.date
         let date = new Date(this.state.birthday).getTime();
+        let timeString = this.builTimeBooking(this.props.dataTime);
+        let doctorName = this.builDoctorName(this.props.dataTime);
 
         let res = await postPatientBookAppointmentService({
             fullName: this.state.fullName,
@@ -110,6 +146,9 @@ class BookingModal extends Component {
             doctorId: this.state.doctorId,
             genders: this.state.genders,
             timeType: this.state.timeType,
+            language: this.props.language,
+            timeString: timeString,
+            doctorName: doctorName,
         })
 
         if (res && res.errCode === 0) {
@@ -129,6 +168,7 @@ class BookingModal extends Component {
         }
         // let doctorId = dataTime && !_.isEmpty(dataTime) ? dataTime.doctorId : '';
 
+        console.log('data time w:', dataTime)
         return (
             // toggle={} backdrop={true}
             <Modal isOpen={isOpenModel} className={'booking-modal-container'} size='lg' centered>
